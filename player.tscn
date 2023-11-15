@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://bd46c2eid3ikv"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_3yuhg"]
+[ext_resource type="Texture2D" uid="uid://vbg048mq1ngj" path="res://Retina/character_roundYellow.png" id="1_xtq75"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tjh1g"]
+size = Vector2(32, 64)
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_3yuhg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_tjh1g")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_tjh1g")
+
+[node name="GFX" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_xtq75")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

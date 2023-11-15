@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://cm3f0wq1220jb"]
+
+[ext_resource type="Texture2D" uid="uid://dmdoddo0t84xh" path="res://Retina/character_handRed.png" id="1_lmbcp"]
+[ext_resource type="Script" path="res://collectible.gd" id="1_mvik0"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wr7rh"]
+radius = 16.0
+
+[node name="Collectible" type="StaticBody2D" groups=["collectible"]]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("1_mvik0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_wr7rh")
+
+[node name="CharacterHandRed" type="Sprite2D" parent="."]
+texture = ExtResource("1_lmbcp")

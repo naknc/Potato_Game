@@ -1,0 +1,10 @@
+res://level.tscn
+res://player.gd
+res://main_game.tscn
+res://platform.tscn
+res://player.tscn
+res://collectible.tscn
+res://collectible.gd
+res://level.gd
+res://UI.gd
+res://ui.tscn

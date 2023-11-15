@@ -1,0 +1,97 @@
+[gd_scene load_steps=6 format=3 uid="uid://b3es72mcwd5f"]
+
+[ext_resource type="Script" path="res://UI.gd" id="1_fmprc"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_cs6fx"]
+font_size = 24
+font_color = Color(0, 0.541176, 0.976471, 1)
+
+[sub_resource type="CanvasTexture" id="CanvasTexture_lnjiw"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_p5v15"]
+font_size = 48
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7hnm0"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
+expand_margin_left = 18.0
+expand_margin_top = 8.0
+expand_margin_right = 18.0
+expand_margin_bottom = 8.0
+
+[node name="UI" type="CanvasLayer"]
+script = ExtResource("1_fmprc")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="InGameUI" type="MarginContainer" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 32
+theme_override_constants/margin_top = 32
+theme_override_constants/margin_right = 32
+theme_override_constants/margin_bottom = 32
+
+[node name="Label" type="Label" parent="Control/InGameUI"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Apple = 0"
+label_settings = SubResource("LabelSettings_cs6fx")
+
+[node name="GameCompleteUI" type="MarginContainer" parent="Control"]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 0
+theme_override_constants/margin_top = 0
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="TextureRect" type="TextureRect" parent="Control/GameCompleteUI"]
+modulate = Color(0, 0, 0, 0.501961)
+layout_mode = 2
+texture = SubResource("CanvasTexture_lnjiw")
+
+[node name="Vbox" type="VBoxContainer" parent="Control/GameCompleteUI"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 64
+
+[node name="Label" type="Label" parent="Control/GameCompleteUI/Vbox"]
+layout_mode = 2
+text = "You Completed The LEVEL"
+label_settings = SubResource("LabelSettings_p5v15")
+
+[node name="Button" type="Button" parent="Control/GameCompleteUI/Vbox"]
+layout_mode = 2
+size_flags_vertical = 4
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_7hnm0")
+theme_override_styles/hover = SubResource("StyleBoxFlat_7hnm0")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_7hnm0")
+text = "Play Again?"
+
+[connection signal="pressed" from="Control/GameCompleteUI/Vbox/Button" to="." method="_on_button_pressed"]
